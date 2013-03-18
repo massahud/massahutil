@@ -4,7 +4,7 @@
  */
 package massahud.massahutil.primefaces;
 
-import javax.faces.component.html.HtmlOutputText;
+import javax.faces.component.html.HtmlOutputLink;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -12,29 +12,29 @@ import org.apache.commons.lang3.StringUtils;
  * 
  * @author massahud
  */
-public class HtmlOutputTextBuilder extends PrimefacesComponentBuilderBase<HtmlOutputText> {
+public class HtmlOutputLinkBuilder extends PrimefacesComponentBuilderBase<HtmlOutputLink> {
     
     private String value;       
     
-    public static HtmlOutputTextBuilder createNew() {
-        return new HtmlOutputTextBuilder();
+    public static HtmlOutputLinkBuilder createNew() {
+        return new HtmlOutputLinkBuilder();
     }
 
-    public HtmlOutputTextBuilder() {
-        super(HtmlOutputText.class);
+    public HtmlOutputLinkBuilder() {
+        super(HtmlOutputLink.class);
     }   
     
-    public HtmlOutputTextBuilder withValue(String value) {
+    public HtmlOutputLinkBuilder withValue(String value) {
         this.value = value;
         return this;
     }
 
     @Override
-    public HtmlOutputText build() {
-        HtmlOutputText component = super.build();        
+    public HtmlOutputLink build() {
+        HtmlOutputLink component = super.build();        
         if (StringUtils.isNotEmpty(value)) {
             component.setValue(value);
-        }                
+        }
         return component;
     }        
     

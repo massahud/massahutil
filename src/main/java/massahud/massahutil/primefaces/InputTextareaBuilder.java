@@ -24,7 +24,7 @@ public class InputTextareaBuilder extends PrimefacesComponentBuilderBase<InputTe
     private Integer cols;
     private boolean disabled;
 
-    public InputTextareaBuilder() {
+    protected InputTextareaBuilder() {
         super(InputTextarea.class);
     }
 

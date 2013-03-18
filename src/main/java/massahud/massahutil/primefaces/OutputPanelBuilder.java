@@ -21,7 +21,7 @@ public class OutputPanelBuilder extends PrimefacesComponentBuilderBase<OutputPan
         return new OutputPanelBuilder();
     }
 
-    public OutputPanelBuilder() {
+    protected OutputPanelBuilder() {
         super(OutputPanel.class);
     }
     

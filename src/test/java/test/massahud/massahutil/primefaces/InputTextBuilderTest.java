@@ -78,4 +78,12 @@ public class InputTextBuilderTest {
                 .build();
         assertThat(inputText.isDisabled()).isTrue();
     }
+    
+    public void shouldSetMaxLength() {
+        final int maxLength = 255;
+        final InputText inputText = InputTextBuilder.createNew()
+                .withMaxLength(maxLength)
+                .build();
+        assertThat(inputText.getMaxlength()).isEqualTo(maxLength);
+    }
 }
