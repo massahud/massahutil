@@ -5,6 +5,7 @@
 package massahud.massahutil.primefaces;
 
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIComponentBase;
 import org.primefaces.component.outputpanel.OutputPanel;
 
 /**
@@ -24,7 +25,7 @@ public class OutputPanelBuilder extends PrimefacesComponentBuilderBase<OutputPan
         super(OutputPanel.class);
     }
     
-    public OutputPanelBuilder setLayoutBlock() {
+    public OutputPanelBuilder withBlockLayout() {
         layoutblock = true;
         return this;
     }
@@ -34,7 +35,7 @@ public class OutputPanelBuilder extends PrimefacesComponentBuilderBase<OutputPan
         OutputPanel component = super.build();
         if (layoutblock) {
             component.setLayout("block");
-        }
+        }        
         return component;
     }
     

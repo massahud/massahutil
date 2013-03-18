@@ -4,8 +4,6 @@
  */
 package test.massahud.massahutil.primefaces;
 
-import javax.el.ELContext;
-import javax.el.ExpressionFactory;
 import javax.el.ValueExpression;
 import javax.faces.component.html.HtmlOutputText;
 import massahud.massahutil.primefaces.HtmlOutputTextBuilder;
@@ -55,15 +53,10 @@ public class HtmlOutputTextBuilderTest {
 
     public void shouldSetValueExpression() {
         final String property = "value";
-        final String valueExpression = "#{myBean.propertyX}";
+        ValueExpression expression = mock(ValueExpression.class);
 
-        final ELContext elContext = mock(ELContext.class);
-        final ExpressionFactory expressionFactory = mock(ExpressionFactory.class);
-        final ValueExpression expression = mock(ValueExpression.class);
-        when(expressionFactory.createValueExpression(any(ELContext.class), anyString(), any(Class.class)))
-                .thenReturn(expression);
         final HtmlOutputText htmlOutputText = HtmlOutputTextBuilder.createNew()
-                .withValueExpression(elContext, expressionFactory, property, valueExpression, null)
+                .withValueExpression(property, expression)
                 .build();
         assertThat(htmlOutputText.getValueExpression(property)).isEqualTo(expression);
     }

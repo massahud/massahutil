@@ -56,7 +56,7 @@ public class OutputPanelBuilderTest {
     
     public void shouldSetBlockLayout() {
         final OutputPanel outputPanel = OutputPanelBuilder.createNew()
-                .setLayoutBlock()
+                .withBlockLayout()
                 .build();
         assertThat(outputPanel.getLayout()).isEqualTo("block");
     }

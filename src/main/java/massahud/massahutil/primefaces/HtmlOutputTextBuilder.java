@@ -38,9 +38,7 @@ public class HtmlOutputTextBuilder extends PrimefacesComponentBuilderBase<HtmlOu
             component.setValue(value);
         }                
         return component;
-    }
-
-    
+    }        
     
         
 }

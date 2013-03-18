@@ -14,6 +14,8 @@ import javax.el.ELContext;
 import javax.el.ExpressionFactory;
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIComponentBase;
+import javax.faces.component.behavior.ClientBehavior;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.ConstructorUtils;
 import org.apache.commons.lang3.reflect.MethodUtils;
@@ -23,7 +25,7 @@ import org.apache.commons.lang3.reflect.MethodUtils;
  *
  * @author massahud
  */
-public abstract class PrimefacesComponentBuilderBase<T extends UIComponent> {
+public abstract class PrimefacesComponentBuilderBase<T extends UIComponentBase> {
 
     private Class<T> classe;
     private Object[] args;
@@ -31,6 +33,7 @@ public abstract class PrimefacesComponentBuilderBase<T extends UIComponent> {
     private String id;
     private List<UIComponent> filhos = new LinkedList<UIComponent>();
     private Map<String, ValueExpression> valueExpressions = new HashMap<String, ValueExpression>();
+    private Map<String, ClientBehavior> clientBehaviors = new HashMap<String, ClientBehavior>();    
 
     protected PrimefacesComponentBuilderBase(Class<T> classe, Object... args) {
         this.classe = classe;
@@ -52,11 +55,15 @@ public abstract class PrimefacesComponentBuilderBase<T extends UIComponent> {
         return this;
     }
     
-    public PrimefacesComponentBuilderBase<T> withValueExpression(ELContext elContext, ExpressionFactory expressionFactory, String property, String valueExpression, Class<?> expectedType) {
-        ValueExpression expression = expressionFactory.createValueExpression(elContext, valueExpression, expectedType);
+    public PrimefacesComponentBuilderBase<T> withValueExpression(String property, ValueExpression expression) {        
         valueExpressions.put(property, expression);
         return this;
     }
+    
+    public PrimefacesComponentBuilderBase<T> withClientBehavior(String event, ClientBehavior behavior) {
+        clientBehaviors.put(event, behavior);
+        return this;
+    }        
 
     public T build() {
         try {
@@ -73,6 +80,11 @@ public abstract class PrimefacesComponentBuilderBase<T extends UIComponent> {
             if (!valueExpressions.isEmpty()) {
                 for (Map.Entry<String, ValueExpression> entry : valueExpressions.entrySet()) {
                     component.setValueExpression(entry.getKey(), entry.getValue());
+                }
+            }   
+            if (!clientBehaviors.isEmpty()) {
+                for (Map.Entry<String, ClientBehavior> entry : clientBehaviors.entrySet()) {
+                    component.addClientBehavior(entry.getKey(), entry.getValue());
                 }
             }
             return component;
