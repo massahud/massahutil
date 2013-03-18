@@ -53,6 +53,14 @@ public class InputTextareaBuilderTest {
         assertThat(inputTextarea.getValue()).isEqualTo(value);
     }
 
+    public void shouldSetCols() {
+        final int cols = 120;
+        final InputTextarea inputTextarea = InputTextareaBuilder.createNew()
+                .withCols(cols)
+                .build();
+        assertThat(inputTextarea.getCols()).isEqualTo(cols);
+    }
+
     public void shouldSetValueExpression() {
         final String property = "value";
         final ValueExpression expression = mock(ValueExpression.class);
@@ -71,7 +79,7 @@ public class InputTextareaBuilderTest {
                 .build();
         assertThat(inputTextarea.getClientBehaviors().get(event)).contains(behavior);
     }
-    
+
     public void shouldDisable() {
         final InputTextarea inputTextarea = InputTextareaBuilder.createNew()
                 .disabled()
