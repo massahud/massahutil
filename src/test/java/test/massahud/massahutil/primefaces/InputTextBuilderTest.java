@@ -71,19 +71,27 @@ public class InputTextBuilderTest {
                 .build();
         assertThat(inputText.getClientBehaviors().get(event)).contains(behavior);
     }
-    
+
     public void shouldDisable() {
         final InputText inputText = InputTextBuilder.createNew()
                 .disabled()
                 .build();
         assertThat(inputText.isDisabled()).isTrue();
     }
-    
+
     public void shouldSetMaxLength() {
         final int maxLength = 255;
         final InputText inputText = InputTextBuilder.createNew()
                 .withMaxLength(maxLength)
                 .build();
         assertThat(inputText.getMaxlength()).isEqualTo(maxLength);
+    }
+
+    public void shouldSetOnFocus() {
+        final String onFocus = "return true";
+        final InputText inputText = InputTextBuilder.createNew()
+                .withOnfocus(onFocus)
+                .build();
+        assertThat(inputText.getOnfocus()).isEqualTo(onFocus);
     }
 }
