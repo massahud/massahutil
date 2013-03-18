@@ -40,4 +40,8 @@ public class PrimefacesComponentBuilderFactory {
     public static SelectBooleanCheckboxBuilder newSelectBooleanCheckbox() {
         return SelectBooleanCheckboxBuilder.createNew();
     }
+    
+    public static PanelGridBuilder newPanelGrid() {
+        return PanelGridBuilder.createNew();
+    }
 }
