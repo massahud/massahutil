@@ -13,7 +13,7 @@ import org.primefaces.component.selectbooleancheckbox.SelectBooleanCheckbox;
  *
  * @author massahud
  */
-public class SelectBooleanCheckboxBuilder extends PrimefacesComponentBuilderBase<SelectBooleanCheckbox> {
+public class SelectBooleanCheckboxBuilder extends PrimefacesComponentBuilderBase<SelectBooleanCheckbox, SelectBooleanCheckboxBuilder> {
 
     private Boolean selected;
 

@@ -13,7 +13,7 @@ import org.primefaces.component.outputpanel.OutputPanel;
  * 
  * @author massahud
  */
-public class OutputPanelBuilder extends PrimefacesComponentBuilderBase<OutputPanel> {
+public class OutputPanelBuilder extends PrimefacesComponentBuilderBase<OutputPanel, OutputPanelBuilder> {
     
     private boolean layoutblock = false;
     

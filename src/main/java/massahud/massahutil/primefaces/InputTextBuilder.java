@@ -12,7 +12,7 @@ import org.primefaces.component.inputtext.InputText;
  *
  * @author massahud
  */
-public class InputTextBuilder extends PrimefacesComponentBuilderBase<InputText> {
+public class InputTextBuilder extends PrimefacesComponentBuilderBase<InputText, InputTextBuilder> {
 
     private String value;
 

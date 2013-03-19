@@ -13,7 +13,7 @@ import org.primefaces.extensions.component.inputnumber.InputNumber;
  *
  * @author massahud
  */
-public class InputNumberBuilder extends PrimefacesComponentBuilderBase<InputNumber> {
+public class InputNumberBuilder extends PrimefacesComponentBuilderBase<InputNumber, InputNumberBuilder> {
 
     private String value;
     private boolean disabled;

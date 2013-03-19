@@ -14,7 +14,7 @@ import org.primefaces.component.inputtextarea.InputTextarea;
  *
  * @author massahud
  */
-public class InputTextareaBuilder extends PrimefacesComponentBuilderBase<InputTextarea> {
+public class InputTextareaBuilder extends PrimefacesComponentBuilderBase<InputTextarea, InputTextareaBuilder> {
 
     private String value;
 

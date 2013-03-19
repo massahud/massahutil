@@ -12,7 +12,7 @@ import org.apache.commons.lang3.StringUtils;
  * 
  * @author massahud
  */
-public class HtmlOutputLinkBuilder extends PrimefacesComponentBuilderBase<HtmlOutputLink> {
+public class HtmlOutputLinkBuilder extends PrimefacesComponentBuilderBase<HtmlOutputLink, HtmlOutputLinkBuilder> {
     
     private String value;       
     

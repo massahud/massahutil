@@ -12,7 +12,7 @@ import org.primefaces.component.panelgrid.PanelGrid;
  *
  * @author massahud
  */
-public class PanelGridBuilder extends PrimefacesComponentBuilderBase<PanelGrid> {
+public class PanelGridBuilder extends PrimefacesComponentBuilderBase<PanelGrid, PanelGridBuilder> {
 
     public static PanelGridBuilder createNew() {
         return new PanelGridBuilder();

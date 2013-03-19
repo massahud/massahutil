@@ -12,7 +12,7 @@ import org.apache.commons.lang3.StringUtils;
  * 
  * @author massahud
  */
-public class HtmlOutputTextBuilder extends PrimefacesComponentBuilderBase<HtmlOutputText> {
+public class HtmlOutputTextBuilder extends PrimefacesComponentBuilderBase<HtmlOutputText, HtmlOutputTextBuilder> {
     
     private String value;       
     

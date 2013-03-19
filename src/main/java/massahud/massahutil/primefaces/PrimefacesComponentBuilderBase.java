@@ -23,9 +23,11 @@ import org.apache.commons.lang3.reflect.MethodUtils;
 /**
  * Base class for component builders. Already implements common functionality
  *
+ * @param <T> component return type
+ * @param <ME> must be the same subclass type, or some methods throw exceptions
  * @author massahud
  */
-public abstract class PrimefacesComponentBuilderBase<T extends UIComponentBase> {
+public abstract class PrimefacesComponentBuilderBase<T extends UIComponentBase, ME extends PrimefacesComponentBuilderBase<T, ME>> {
 
     private Class<T> classe;
     private Object[] args;
@@ -40,29 +42,34 @@ public abstract class PrimefacesComponentBuilderBase<T extends UIComponentBase> 
         this.args = args;
     }
 
-    public PrimefacesComponentBuilderBase<T> withStyleClass(String classe) {
+    @SuppressWarnings("unchecked")
+    public ME withStyleClass(String classe) {
         styleClasses.add(classe);
-        return this;
+        return (ME) this;
     }
 
-    public PrimefacesComponentBuilderBase<T> withId(String id) {
+    @SuppressWarnings("unchecked")
+    public ME withId(String id) {
         this.id = id;
-        return this;
+        return (ME) this;
     }
 
-    public PrimefacesComponentBuilderBase<T> withChild(UIComponent filho) {
+    @SuppressWarnings("unchecked")
+    public ME withChild(UIComponent filho) {
         this.filhos.add(filho);
-        return this;
+        return (ME) this;
     }
     
-    public PrimefacesComponentBuilderBase<T> withValueExpression(String property, ValueExpression expression) {        
+    @SuppressWarnings("unchecked")
+    public ME withValueExpression(String property, ValueExpression expression) {        
         valueExpressions.put(property, expression);
-        return this;
+        return (ME) this;
     }
     
-    public PrimefacesComponentBuilderBase<T> withClientBehavior(String event, ClientBehavior behavior) {
+    @SuppressWarnings("unchecked")
+    public ME withClientBehavior(String event, ClientBehavior behavior) {
         clientBehaviors.put(event, behavior);
-        return this;
+        return (ME) this;
     }        
 
     public T build() {
